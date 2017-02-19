@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>常用算法 &mdash; MAB 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="MAB 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="应用： 该如何去做？" href="application.html"/>
+        <link rel="prev" title="初识： 何为老虎机？" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MAB
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">初识： 何为老虎机？</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">常用算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">应用： 该如何去做？</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">MAB</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>常用算法</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/policy.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>常用算法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><img alt="bandit" src="_images/thief.png" /></div></blockquote>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Epsilon-Greedy</dt>
+<dd><p class="first"><img alt="epsilon" src="_images/epsilon.png" /></p>
+<ul class="last simple">
+<li>优点 简单直观</li>
+<li>缺点 随意启发，没有利用结构化信息（虽然可让 epsilon 递减，但利用的信息仍然有限）</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>UCB1</dt>
+<dd><p class="first last"><img alt="UCB1" src="_images/ucb1.png" /></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Softmax</dt>
+<dd><p class="first"><img alt="softmax" src="_images/softmax.jpg" /></p>
+<p class="last">其中，beta 是学习率参数</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Pursuit</p>
+<blockquote>
+<div><p><img alt="pursuit" src="_images/pursuit.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Thomas Sampling</p>
+<blockquote>
+<div><p><img alt="beta" src="_images/beta.jpg" /></p>
+<p><img alt="beta_conjugate" src="_images/beta_conjugate.jpg" /></p>
+<p><img alt="bayesian" src="_images/bayesian.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">EXP3</p>
+<blockquote>
+<div><p><img alt="exp3" src="_images/exp3.png" /></p>
+<dl class="class">
+<dt id="policies.exp3.EXP3Policy">
+<em class="property">class </em><code class="descclassname">policies.exp3.</code><code class="descname">EXP3Policy</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#policies.exp3.EXP3Policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponential-weight algorithm for Exploration and Exploitation</p>
+<p>权重和随机性之间，用参数 <span class="math">\(\gamma\)</span> 协调</p>
+<p>see more: <a class="reference external" href="https://jeremykun.com/2013/11/08/adversarial-policies-and-the-exp3-algorithm/">Adversarial Bandits and the Exp3 Algorithm</a></p>
+</dd></dl>
+
+</div></blockquote>
+</li>
+<li><p class="first">LinUCB</p>
+<blockquote>
+<div><p>上下文相关老虎机算法，即我们利用一些场外信息（附加上下文信息）来辅助决策。</p>
+<p>主要假设： 每个臂的回报的期望是上下文的线性函数(linear stochastic bandits)</p>
+<p><img alt="linear_assumption" src="_images/linear_assumption.png" /></p>
+<p>可以证明： 至少以概率 1-delta
+<img alt="bound" src="_images/bound.png" /></p>
+<p>求解算法如下</p>
+<p><img alt="LinUCB" src="_images/linucb.png" /></p>
+<p>disjoint: 不同臂的参数不共享</p>
+</div></blockquote>
+</li>
+<li><p class="first">Bootstrap Bandit</p>
+<blockquote>
+<div><p>通过 Bootstrap 的方式，估计参数以及回报，取使得预估回报的某个分位点最大的臂</p>
+<p><img alt="bootstrap" src="_images/bootstrap.png" /></p>
+<p>其中B为bootstrap次数，R为回报向量，X为特征矩阵，M为臂的个数，U为臂的集合</p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Collaborative Filtering with Bandit</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CoLin</dt>
+<dd><p class="first last">Contextual Bandits in A Collaborative Environment(to read)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>COFIBA</dt>
+<dd><p class="first last">Collaborative Filtering Bandits</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="application.html" class="btn btn-neutral float-right" title="应用： 该如何去做？" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="初识： 何为老虎机？" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lancezhange.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
